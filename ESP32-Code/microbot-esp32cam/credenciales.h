@@ -11,8 +11,8 @@
  * 
 */
 
-#define SECRET_SSID  "nombreDeLaRed"
-#define SECRET_PASS  "Contraseña"
+#define SECRET_SSID  "***********"
+#define SECRET_PASS  "***********"
 
 /* 
  * Copyright (c) 2023 Gerald Valverde Mc kenzie | McKode.
