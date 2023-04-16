@@ -1,5 +1,6 @@
 # MicroBot
-Robot lúdico que emplea Inteligencia Artificial.
+Robot lúdico que emplea Inteligencia Artificial para la detección de figuras y objetos.
+
 
 Copyright (c) 2023 Gerald Valverde Mc kenzie | McKode Development.
 
