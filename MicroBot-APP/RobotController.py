@@ -76,14 +76,24 @@ class RobotController:
     def main(self):
 
         def update_image_thread():
-            img, isDog = self.IA.localize_objects(self.__loadImageESP())
+            img, objectsDetected = self.IA.localize_objects(self.__loadImageESP())
             img.resize((450, 450))
-            if(isDog):
-                self.send_command("led") 
-                print("isDog")
+            for object in objectsDetected:
+                detectarPerros(object)
+                detectarAves(object)
             self.image_value= ImageTk.PhotoImage(image=img)#self.__loadImage("x.jpg")
             self.__cv.itemconfigure(self.image_label, image=self.image_value)
             print("Updated")
+        
+        def detectarPerros(object):
+            if("Dog" == object.name):
+                    self.send_command("led")
+                    print("Es un perro")
+
+        def detectarAves(object):
+            if("Bird" == object.name):
+                    self.send_command("led")
+                    print("Es una ave")
 
         def update_shape_thread():
             img, shapes = self.ShapeIA.detect_shapes(self.__loadImageESP())

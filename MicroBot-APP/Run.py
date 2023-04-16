@@ -17,6 +17,6 @@ limitations under the License.
 from RobotController import RobotController
 
 # Cambiar IP del ESP32
-direccion_ip_esp32 = "10.14.14.33"
+direccion_ip_esp32 = "192.168.18.21"
 APP = RobotController(direccion_ip_esp32)
 APP.main()

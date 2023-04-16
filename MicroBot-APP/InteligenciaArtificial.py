@@ -26,7 +26,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 class InteligenciaArtificial:
     def __init__(self) -> None:
-        self.isDog = False
+        self.objectsDetected = []
     
     def recognize_objects(self,path):
         """Localize objects in the local image.
@@ -75,7 +75,6 @@ class InteligenciaArtificial:
         An annotated PIL Image object.
         """
         client = vision.ImageAnnotatorClient()
-        self.isDog = False
         # Convertir la imagen PIL a bytes
         with io.BytesIO() as output:
             image.save(output, format="JPEG")
@@ -93,6 +92,8 @@ class InteligenciaArtificial:
         # Dibujar las etiquetas de los objetos en la imagen
         draw = ImageDraw.Draw(image)
         font = ImageFont.truetype("arial.ttf", 20)
+        #Asignar lista de objetos
+        self.objectsDetected=objects
         for object_ in objects:
             name = object_.name
             score = object_.score
@@ -102,12 +103,10 @@ class InteligenciaArtificial:
             y2 = int(object_.bounding_poly.normalized_vertices[2].y * height)
             draw.rectangle([x1, y1, x2, y2], outline='red', width=2)
             draw.text((x1, y1), f'{name} ({score:.2f})', font=font)
-            if(object_.name=="Dog"):
-                self.isDog = True
 
         # Devolver la imagen con las etiquetas
         self.saveImage(image,"images/x.jpg")
-        return image, self.isDog
+        return image, self.objectsDetected
 
     
     def saveImage(self,image,output_path):
