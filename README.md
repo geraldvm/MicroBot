@@ -1,6 +1,14 @@
 # MicroBot
 Robot lúdico que emplea Inteligencia Artificial para la detección de figuras y objetos.
 
+# Dependencies
+`Arduino IDE`
+`Python3.7 or more.`
+`pip install Pillow`
+`pip install requests`
+`pip install google-cloud`
+`pip install google-cloud-vision`
+
 
 Copyright (c) 2023 Gerald Valverde Mc kenzie | McKode Development.
 
